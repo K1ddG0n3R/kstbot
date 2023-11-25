@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "kstbot"
+version = "0.1.0"
+description = ""
+authors = ["Daniil Valakhov <daniil.2804@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aiogram = "^3.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
