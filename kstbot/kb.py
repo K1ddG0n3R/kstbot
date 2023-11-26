@@ -1,5 +1,4 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
 start = InlineKeyboardMarkup(inline_keyboard=[
@@ -8,7 +7,9 @@ start = InlineKeyboardMarkup(inline_keyboard=[
 menu = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="FAQ", callback_data="faq")],
     [InlineKeyboardButton(text="Обратная связь", callback_data="feedback")],
-    [InlineKeyboardButton(text="Направления обучения", callback_data="sa")]])
+    [InlineKeyboardButton(text="Направления обучения", callback_data="sa")],
+    [InlineKeyboardButton(text="О нас", callback_data="about")],
+    ])
 
 
 faq = InlineKeyboardMarkup(inline_keyboard=[
@@ -24,7 +25,7 @@ faq = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Назад", callback_data="menu")]
     ])
 
-feedback = InlineKeyboardMarkup(inline_keyboard=[
+only_back = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Назад", callback_data="menu")]
     ])
 

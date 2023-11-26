@@ -50,7 +50,7 @@ async def cb_feedback(call: types.CallbackQuery):
         logging.error("No message in callback query")
         return
 
-    await message.edit_text(msg_texts.FEEDBACK, reply_markup=kb.feedback)
+    await message.edit_text(msg_texts.FEEDBACK, reply_markup=kb.only_back)
 
 
 @router.callback_query(F.data == 'sa')
@@ -61,3 +61,13 @@ async def cb_sa(call: types.CallbackQuery):
         return
 
     await message.edit_text("Выберите направление обучения", reply_markup=kb.sa)
+
+
+@router.callback_query(F.data == 'about')
+async def cb_about(call: types.CallbackQuery):
+    message = call.message
+    if not message:
+        logging.error("No message in callback query")
+        return
+
+    await message.edit_text(msg_texts.ABOUT, reply_markup=kb.only_back)
