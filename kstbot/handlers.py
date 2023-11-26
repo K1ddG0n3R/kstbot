@@ -3,9 +3,9 @@ import logging
 from aiogram import types, F, Router
 from aiogram.filters import Command
 
+
 import kb
 import msg_texts
-
 
 router = Router()
 
@@ -71,3 +71,16 @@ async def cb_about(call: types.CallbackQuery):
         return
 
     await message.edit_text(msg_texts.ABOUT, reply_markup=kb.only_back)
+
+
+
+@router.callback_query(F.data == 'partners')
+async def partners_kb_builder(call: types.CallbackQuery):
+    kb.partners_inline_builder()
+
+    message = call.message
+    if not message:
+        logging.error("No message in callback query")
+        return
+
+    await message.edit_text("Наши партнеры", reply_markup=kb.partners_inline_builder())
