@@ -59,5 +59,3 @@ def partners_inline_builder():
 
 
 
-
-
