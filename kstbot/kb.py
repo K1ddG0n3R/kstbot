@@ -1,5 +1,7 @@
+from os import name
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+from bs4 import builder
 
 from parse.partners_parser import parse_partners
 
@@ -45,10 +47,18 @@ sa = InlineKeyboardMarkup(inline_keyboard=[
 
 
 def partners_inline_builder():
-    dict = {}
-    partners_dict = parse_partners(dict, 'https://kstpro.ru/company/partners')
+    partners_dict = parse_partners({}, 'https://kstpro.ru/company/partners')
 
     partners_kb_builder = InlineKeyboardBuilder()
     for name, url in partners_dict.items():
         partners_kb_builder.add(InlineKeyboardButton(text=name, url=url))
     return InlineKeyboardMarkup(inline_keyboard=partners_kb_builder.export())
+
+
+
+
+
+
+
+
+
