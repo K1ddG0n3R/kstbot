@@ -92,9 +92,11 @@ sa = InlineKeyboardMarkup(
 
 
 def partners_inline_builder():
-    partners_dict = parse_partners({}, "https://kstpro.ru/company/partners")
+    partners_dict = parse_partners({})
 
     partners_kb_builder = InlineKeyboardBuilder()
     for name, url in partners_dict.items():
         partners_kb_builder.add(InlineKeyboardButton(text=name, url=url))
+
+    partners_kb_builder.adjust(1)
     return InlineKeyboardMarkup(inline_keyboard=partners_kb_builder.export())
