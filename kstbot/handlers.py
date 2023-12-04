@@ -71,9 +71,7 @@ async def cb_about(call: types.CallbackQuery):
         logging.error("No message in callback query")
         return
 
-    await message.edit_text(
-        msg_texts.ABOUT, reply_markup=kb.only_back, parse_mode="HTML"
-    )
+    await message.edit_text(msg_texts.ABOUT, reply_markup=kb.only_back)
 
 
 @router.callback_query(F.data == "partners")

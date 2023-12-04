@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "kstbot"
 version = "0.1.0"
-description = ""
+description = "TG bot for KST"
 authors = ["Daniil Valakhov <daniil.2804@yandex.ru>"]
 readme = "README.md"
 

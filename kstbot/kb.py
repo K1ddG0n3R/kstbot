@@ -1,3 +1,4 @@
+from aiogram.filters import callback_data
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
@@ -97,6 +98,8 @@ def partners_inline_builder():
     partners_kb_builder = InlineKeyboardBuilder()
     for name, url in partners_dict.items():
         partners_kb_builder.add(InlineKeyboardButton(text=name, url=url))
+
+    partners_kb_builder.add(InlineKeyboardButton(text="Назад", callback_data="menu"))
 
     partners_kb_builder.adjust(1)
     return InlineKeyboardMarkup(inline_keyboard=partners_kb_builder.export())
