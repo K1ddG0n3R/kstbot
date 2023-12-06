@@ -1,14 +1,37 @@
 [tool.poetry]
 name = "kstbot"
 version = "0.1.0"
-description = ""
+description = "TG bot for KST"
 authors = ["Daniil Valakhov <daniil.2804@yandex.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 aiogram = "^3.2.0"
+requests = "^2.31.0"
+lxml = "^4.9.3"
+bs4 = "^0.0.1"
 
+
+[tool.mypy]
+python_version = "3.10"
+mypy_path = "./kstbot"
+
+[[tool.mypy.overrides]]
+module = "aiogram.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "requests.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "bs4.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "selenium.*"
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core"]
