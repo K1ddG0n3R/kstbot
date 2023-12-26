@@ -8,11 +8,11 @@ start = InlineKeyboardMarkup(
 
 menu = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="❓ Основные вопросы", callback_data="faq")],
-        [InlineKeyboardButton(text="📨 Обратная связь", callback_data="feedback")],
-        [InlineKeyboardButton(text="📚 Направления обучения", callback_data="sa")],
         [InlineKeyboardButton(text="🌐 О нас", callback_data="about")],
+        [InlineKeyboardButton(text="📚 Направления обучения", callback_data="sa")],
+        [InlineKeyboardButton(text="❓ Основные вопросы", callback_data="faq")],
         [InlineKeyboardButton(text="🤝Наши партнеры", callback_data="partners")],
+        [InlineKeyboardButton(text="📨 Обратная связь", callback_data="feedback")],
     ]
 )
 
