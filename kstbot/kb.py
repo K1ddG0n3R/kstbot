@@ -1,8 +1,5 @@
 from aiogram.filters import callback_data
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-
-from parse.partners_parser import parse_partners
 
 
 start = InlineKeyboardMarkup(
@@ -11,11 +8,11 @@ start = InlineKeyboardMarkup(
 
 menu = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="FAQ", callback_data="faq")],
-        [InlineKeyboardButton(text="Обратная связь", callback_data="feedback")],
-        [InlineKeyboardButton(text="Направления обучения", callback_data="sa")],
-        [InlineKeyboardButton(text="О нас", callback_data="about")],
-        [InlineKeyboardButton(text="Наши партнеры", callback_data="partners")],
+        [InlineKeyboardButton(text="❓ Основные вопросы", callback_data="faq")],
+        [InlineKeyboardButton(text="📨 Обратная связь", callback_data="feedback")],
+        [InlineKeyboardButton(text="📚 Направления обучения", callback_data="sa")],
+        [InlineKeyboardButton(text="🌐 О нас", callback_data="about")],
+        [InlineKeyboardButton(text="🤝Наши партнеры", callback_data="partners")],
     ]
 )
 
@@ -91,15 +88,10 @@ sa = InlineKeyboardMarkup(
     ]
 )
 
-
-def partners_inline_builder():
-    partners_dict = parse_partners({})
-
-    partners_kb_builder = InlineKeyboardBuilder()
-    for name, url in partners_dict.items():
-        partners_kb_builder.add(InlineKeyboardButton(text=name, url=url))
-
-    partners_kb_builder.add(InlineKeyboardButton(text="Назад", callback_data="menu"))
-
-    partners_kb_builder.adjust(1)
-    return InlineKeyboardMarkup(inline_keyboard=partners_kb_builder.export())
+partners = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="🎓ВУЗы партнеры", callback_data="partners_1")],
+        [InlineKeyboardButton(text="🤝Все партнеры", callback_data="partners_2")],
+        [InlineKeyboardButton(text="Назад", callback_data="menu")],
+    ]
+)

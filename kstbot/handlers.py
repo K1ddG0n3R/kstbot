@@ -35,7 +35,7 @@ async def cb_faq(call: types.CallbackQuery):
 
 
 @router.callback_query(lambda call: call.data.startswith("faq_"))
-async def get_answer(call: types.CallbackQuery):
+async def faq_get_answer(call: types.CallbackQuery):
     message = call.message
     if not message:
         logging.error("No message in callback query")
@@ -75,12 +75,32 @@ async def cb_about(call: types.CallbackQuery):
 
 
 @router.callback_query(F.data == "partners")
-async def partners_kb_builder(call: types.CallbackQuery):
-    kb.partners_inline_builder()
-
+async def cb_partners(call: types.CallbackQuery):
     message = call.message
     if not message:
         logging.error("No message in callback query")
         return
 
-    await message.edit_text("Наши партнеры", reply_markup=kb.partners_inline_builder())
+    await message.edit_text("Наши партнеры", reply_markup=kb.partners)
+
+
+@router.callback_query(lambda call: call.data.startswith("partners_"))
+async def partners(call: types.CallbackQuery):
+    message = call.message
+    if not message:
+        logging.error("No message in callback query")
+        return
+
+    await message.edit_text(
+        msg_texts.PARTNERS_DICT[call.data], reply_markup=kb.partners
+    )
+
+
+@router.callback_query(lambda call: call.data.startswith("sa_"))
+async def sa_get_answer(call: types.CallbackQuery):
+    message = call.message
+    if not message:
+        logging.error("No message in callback query")
+        return
+
+    await message.edit_text(msg_texts.SA_DICT[call.data], reply_markup=kb.only_back)
