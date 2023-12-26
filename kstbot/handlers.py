@@ -103,4 +103,4 @@ async def sa_get_answer(call: types.CallbackQuery):
         logging.error("No message in callback query")
         return
 
-    await message.edit_text(msg_texts.SA_DICT[call.data], reply_markup=kb.only_back)
+    await message.edit_text(msg_texts.SA_DICT[call.data], reply_markup=kb.sa)
