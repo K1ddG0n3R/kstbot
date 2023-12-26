@@ -32,35 +32,30 @@ faq = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="❓Есть ли отсрочка от армии?", callback_data="faq_3"
+                text="❓Есть ли заочная форма обучения?",
+                callback_data="faq_3",
             )
         ],
         [
             InlineKeyboardButton(
-                text="❓Есть ли вступительные испытания при поступлении?",
+                text="❓Есть ли в колледже автошкола?",
                 callback_data="faq_4",
             )
         ],
         [
             InlineKeyboardButton(
-                text="❓Как узнать проходной балл на специальность?",
-                callback_data="faq_5",
+                text="❓Есть ли отсрочка от армии?", callback_data="faq_5"
+            )
+        ],
+        [
+        [
+            InlineKeyboardButton(
+                text="❓Предоставляет колледж общежитие?", callback_data="faq_6"
             )
         ],
         [
             InlineKeyboardButton(
-                text="❓Можно ли поступить в колледж после 10 класса?",
-                callback_data="faq_6",
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="❓Предоставляет колледж общежитие?", callback_data="faq_7"
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="❓Когда будет день открытых дверей?", callback_data="faq_8"
+                text="❓Когда будет день открытых дверей?", callback_data="faq_7"
             )
         ],
         [InlineKeyboardButton(text="🔘Другое", callback_data="faq_other")],
