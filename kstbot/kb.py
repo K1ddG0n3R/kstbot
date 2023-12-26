@@ -48,7 +48,6 @@ faq = InlineKeyboardMarkup(
             )
         ],
         [
-        [
             InlineKeyboardButton(
                 text="❓Предоставляет колледж общежитие?", callback_data="faq_6"
             )
