@@ -25,4 +25,4 @@ dmypy.json
 poetry.lock
 
 # config
-config.py
+./kstbot/config.py
