@@ -10,7 +10,7 @@ router = Router()
 
 
 @router.message(Command("start"))
-async def cmd_start(message: types.Message):
+async def start(message: types.Message):
     await message.answer(msg_texts.GREETING, reply_markup=kb.start)
 
 
@@ -24,6 +24,15 @@ async def cb_menu(call: types.CallbackQuery):
     await message.edit_text(msg_texts.MENU, reply_markup=kb.menu)
 
 
+@router.message(F.text == "Меню")
+async def cb_keyboard_menu_button(message: types.Message):
+    if not message:
+        logging.error("No message")
+        return
+
+    await message.answer(msg_texts.MENU, reply_markup=kb.menu)
+
+
 @router.callback_query(F.data == "faq")
 async def cb_faq(call: types.CallbackQuery):
     message = call.message
@@ -35,7 +44,7 @@ async def cb_faq(call: types.CallbackQuery):
 
 
 @router.callback_query(lambda call: call.data.startswith("faq_"))
-async def get_answer(call: types.CallbackQuery):
+async def faq_get_answer(call: types.CallbackQuery):
     message = call.message
     if not message:
         logging.error("No message in callback query")
@@ -75,12 +84,32 @@ async def cb_about(call: types.CallbackQuery):
 
 
 @router.callback_query(F.data == "partners")
-async def partners_kb_builder(call: types.CallbackQuery):
-    kb.partners_inline_builder()
-
+async def cb_partners(call: types.CallbackQuery):
     message = call.message
     if not message:
         logging.error("No message in callback query")
         return
 
-    await message.edit_text("Наши партнеры", reply_markup=kb.partners_inline_builder())
+    await message.edit_text("Наши партнеры", reply_markup=kb.partners)
+
+
+@router.callback_query(lambda call: call.data.startswith("partners_"))
+async def partners(call: types.CallbackQuery):
+    message = call.message
+    if not message:
+        logging.error("No message in callback query")
+        return
+
+    await message.edit_text(
+        msg_texts.PARTNERS_DICT[call.data], reply_markup=kb.partners
+    )
+
+
+@router.callback_query(lambda call: call.data.startswith("sa_"))
+async def sa_get_answer(call: types.CallbackQuery):
+    message = call.message
+    if not message:
+        logging.error("No message in callback query")
+        return
+
+    await message.edit_text(msg_texts.SA_DICT[call.data], reply_markup=kb.sa)
