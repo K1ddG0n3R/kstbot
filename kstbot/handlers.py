@@ -10,7 +10,7 @@ router = Router()
 
 
 @router.message(Command("start"))
-async def cmd_start(message: types.Message):
+async def start(message: types.Message):
     await message.answer(msg_texts.GREETING, reply_markup=kb.start)
 
 
@@ -22,6 +22,15 @@ async def cb_menu(call: types.CallbackQuery):
         return
 
     await message.edit_text(msg_texts.MENU, reply_markup=kb.menu)
+
+
+@router.message(F.text == "Меню")
+async def cb_keyboard_menu_button(message: types.Message):
+    if not message:
+        logging.error("No message")
+        return
+
+    await message.answer(msg_texts.MENU, reply_markup=kb.menu)
 
 
 @router.callback_query(F.data == "faq")

@@ -20,3 +20,9 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# poetry
+poetry.lock
+
+# config
+config.py

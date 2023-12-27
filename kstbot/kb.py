@@ -1,9 +1,14 @@
 from aiogram.filters import callback_data
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import (
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    ReplyKeyboardMarkup,
+    KeyboardButton,
+)
 
 
-start = InlineKeyboardMarkup(
-    inline_keyboard=[[InlineKeyboardButton(text="Меню", callback_data="menu")]]
+start = ReplyKeyboardMarkup(
+    keyboard=[[KeyboardButton(text="Меню")]], resize_keyboard=True
 )
 
 menu = InlineKeyboardMarkup(
